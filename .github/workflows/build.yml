@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: learn-github-actions
+name: Pokemon Review APP Build and Test
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
@@ -14,10 +14,14 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: | 
+        dotnet restore .\PokemonReviewApp\Pokemon.csproj
+        dotnet restore .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: |
+        dotnet build --no-restore .\PokemonReviewApp\Pokemon.csproj
+        dotnet build --no-restore .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj --no-build --verbosity normal
