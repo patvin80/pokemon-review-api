@@ -16,11 +16,11 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: | 
-        dotnet restore .\PokemonReviewApp\Pokemon.csproj
+        dotnet restore .\PokemonReviewApp\PokemonReviewApp.csproj
         dotnet restore .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj
     - name: Build
       run: |
-        dotnet build --no-restore .\PokemonReviewApp\Pokemon.csproj
+        dotnet build --no-restore .\PokemonReviewApp\PokemonReviewApp.csproj
         dotnet build --no-restore .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj
     - name: Test
       run: dotnet test .\PokemonReviewApp.Tests\PokemonReviewApp.Tests.csproj --no-build --verbosity normal
